@@ -1,0 +1,87 @@
+--These are the methods I found/tested whilst trying to create an item giver before I created my catalog exploit. --Scapters
+
+--Coin Grabber
+game.Players:Chat("Hi") --[[ Coin Crabber af ]]--
+while wait(1) do
+for i,v in pairs(game.Workspace:GetChildren()) do
+local f = v:FindFirstChild("CoinContainer")
+local q = game.Players.LocalPlayer.Character:FindFirstChild("Torso")
+if q and f then
+for i,c in pairs(f:GetChildren()) do
+c.CFrame = game.Players.LocalPlayer.Character.Torso.CFrame
+end
+end
+end
+end
+
+--Print Codes
+local Remote = game.ReplicatedStorage
+local Database = {Weapons = Remote.GetSyncData:InvokeServer("Item"), Effects = Remote.GetSyncData:InvokeServer("Effects"), Perks = Remote.GetSyncData:InvokeServer("Perks"), Emotes = Remote.GetSyncData:InvokeServer("Emotes"), Radios = Remote.GetSyncData:InvokeServer("Radios"), Toys = Remote.GetSyncData:InvokeServer("Toys"), Recipes = Remote.GetSyncData:InvokeServer("Recipe"), Codes = Remote.GetSyncData:InvokeServer("Codes"), Recyclable = Remote.GetSyncData:InvokeServer("Recyclable"), SlotInfo = Remote.GetSyncData:InvokeServer("SlotInfo"), Crates = Remote.GetSyncData:InvokeServer("MysteryBox"), Bundles = Remote.GetSyncData:InvokeServer("Bundles")}
+local Stuff = {"Weapons", "Emotes", "Toys", "Effects", "Perks", "Radios", "Pets"}
+local MyStuff = {Weapons = nil, Effects = nil, Perks = nil, Emotes = nil, Radios = nil, Pets = nil}
+for Code,CodeTable in pairs(Database.Codes) do
+print(Code.." : "..CodeTable.Prize)
+end
+
+--Print Weapons
+local Remote = game.ReplicatedStorage
+local Database = {Weapons = Remote.GetSyncData:InvokeServer("Item"), Effects = Remote.GetSyncData:InvokeServer("Effects"), Perks = Remote.GetSyncData:InvokeServer("Perks"), Emotes = Remote.GetSyncData:InvokeServer("Emotes"), Radios = Remote.GetSyncData:InvokeServer("Radios"), Toys = Remote.GetSyncData:InvokeServer("Toys"), Recipes = Remote.GetSyncData:InvokeServer("Recipe"), Codes = Remote.GetSyncData:InvokeServer("Codes"), Recyclable = Remote.GetSyncData:InvokeServer("Recyclable"), SlotInfo = Remote.GetSyncData:InvokeServer("SlotInfo"), Crates = Remote.GetSyncData:InvokeServer("MysteryBox"), Bundles = Remote.GetSyncData:InvokeServer("Bundles")}
+local Stuff = {"Weapons", "Emotes", "Toys", "Effects", "Perks", "Radios", "Pets"}
+local MyStuff = {Weapons = nil, Effects = nil, Perks = nil, Emotes = nil, Radios = nil, Pets = nil}
+for Weapon,WeaponTable in pairs(Database.Weapons) do
+if WeaponTable.ItemID then
+print(Weapon.." : "..WeaponTable.ItemID)
+end
+end
+
+--Print Crates
+local Remote = game.ReplicatedStorage
+local Database = {Weapons = Remote.GetSyncData:InvokeServer("Item"), Effects = Remote.GetSyncData:InvokeServer("Effects"), Perks = Remote.GetSyncData:InvokeServer("Perks"), Emotes = Remote.GetSyncData:InvokeServer("Emotes"), Radios = Remote.GetSyncData:InvokeServer("Radios"), Toys = Remote.GetSyncData:InvokeServer("Toys"), Recipes = Remote.GetSyncData:InvokeServer("Recipe"), Codes = Remote.GetSyncData:InvokeServer("Codes"), Recyclable = Remote.GetSyncData:InvokeServer("Recyclable"), SlotInfo = Remote.GetSyncData:InvokeServer("SlotInfo"), Crates = Remote.GetSyncData:InvokeServer("MysteryBox"), Bundles = Remote.GetSyncData:InvokeServer("Bundles")}
+local Stuff = {"Weapons", "Emotes", "Toys", "Effects", "Perks", "Radios", "Pets"}
+local MyStuff = {Weapons = nil, Effects = nil, Perks = nil, Emotes = nil, Radios = nil, Pets = nil}
+for Crate,CrateTable in pairs(Database.Crates) do
+if CrateTable.ItemID then
+print(Crate.." : "..CrateTable.ItemID)
+end
+end
+
+--Get Player
+local player = game.ReplicatedStorage.GetData2:InvokeServer()
+
+--Possible Give Items
+local player = game.ReplicatedStorage.GetData2:InvokeServer()
+table.insert(player.Weapons.Owned, 315501640)
+game.ReplicatedStorage.UpdateDataClient:Fire()
+game.ReplicatedStorage.UpdateData2:FireServer()
+game.ReplicatedStorage.Buy:FireServer("Fade", "Weapons")
+
+--Print Owned
+local player = game.ReplicatedStorage.GetData2:InvokeServer()
+for i,v in pairs(player.Weapons.Owned) do
+print(i.." : "..v )
+end
+
+--Print Murderer
+for i,v in pairs(game.Players:GetChildren()) do
+v.Backpack.ChildAdded:connect(function(child)
+if child.Name == "Knife" then
+print(v.Name)
+end
+end)
+end
+
+--Give Items
+--Forgot to snip this is the catalog exploit lol.
+
+--Print DevProducts
+local DeveloperProducts = game:GetService("MarketplaceService"):GetDeveloperProductsAsync():GetCurrentPage()
+ 
+for _, DevProductContainer in pairs(DeveloperProducts) do
+    for Field, Value in pairs(DevProductContainer) do
+        print(Field .. ": " .. Value)
+    end
+    print(" ")
+end
+
+--Modded Lobbies
+--Snip also catalog exploit.
